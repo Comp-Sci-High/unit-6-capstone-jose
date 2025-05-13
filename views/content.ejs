@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Cards Page!</title>
+  <title>Content Page!</title>
   <link rel="stylesheet" href="/style.css" />
   <script src="/script.js" defer></script>
 </head>
 <body>
 
-      <div class="teachers-grid">
+    <div class="teachers-grid">
       <% for (let i = 0; i < teachers.length; i++) { %>
-        <div class="teacher-card">
+        <div class="teacher-content">
           <img src="<%= teachers[i].image %>" alt="<%= teachers[i].name %>" />
-          <div class="teacher-card-content">
+          <div class="teacher-content">
             <h2><%= teachers[i].name %></h2>
             <p><strong>Department:</strong> <%= teachers[i].department %></p>
           </div>

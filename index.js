@@ -39,26 +39,26 @@ app.get("/", async (req, res) => {
 });
 
 app.get("/", async (req, res) => {
-    const teachers = await Content.find({});
+    const content = await Content.find({});
     res.render("content.ejs", { Contents });
 });
 
 
-app.delete("/delete/teachers:id", async (req,res) => {
+app.delete("/delete/teachers:_id", async (req,res) => {
     const response = await Teacher.findOneAndDelete({ name: req.params._id})
 res.json(response)
 })
 
-app.delete("/delete/contents:id", async (req,res) => {
+app.delete("/delete/contents:_id", async (req,res) => {
     const response = await Content.findOneAndDelete({ name: req.params._id})
 res.json(response)
 })
 
-app.patch("/contents/update/:id", async (req,res) => {
+app.patch("/contents/update/:_id", async (req,res) => {
   const response = await Content.findOneAndUpdate({name})
 })
 
-app.patch("/teachers/update/:id", async (req,res) => {
+app.patch("/teachers/update/:_id", async (req,res) => {
   const response = await Teacher.findOneAndUpdate({name})
 })
 
