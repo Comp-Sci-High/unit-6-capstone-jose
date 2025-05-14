@@ -62,6 +62,8 @@ app.patch("/teachers/update/:_id", async (req,res) => {
   const response = await Teacher.findOneAndUpdate({name})
 })
 
+app.post()
+
 
 async function startServer() {
     
