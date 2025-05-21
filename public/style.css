@@ -134,3 +134,260 @@ body.dark-mode .card {
     opacity: 1 !important;
     transform: translateY(0) !important;
 }
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+.navbar {
+    background: #333;
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+.hero {
+    text-align: center;
+    background: #f4f4f4;
+    padding: 2em 0;
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    background: #ddd;
+    padding: 1em 0;
+    display: flex;
+    justify-content: center; /* Center carousel */
+}
+
+.carousel-container {
+    display: flex;
+    animation: slide 15s infinite;
+    width: 100%;
+}
+
+.carousel-container img {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-100%); }
+    66% { transform: translateX(-200%); }
+    100% { transform: translateX(0); }
+}
+
+/* Card container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 2em;
+    padding: 2em;
+    justify-items: center; /* Center cards within each column */
+    background-color: #fafafa;
+    max-width: 1200px; /* Restrict max width */
+    margin: 0 auto; /* Center the card container */
+}
+
+/* Individual card styles */
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    padding-bottom: 1em;
+    width: 100%; /* Ensure cards take up full width available in each column */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h3 {
+    margin: 0.5em 0;
+}
+
+.card p {
+    padding: 0 1em;
+}
+
+@media screen and (max-width: 768px) {
+    /* For smaller screens, stack cards into a single column */
+    .card-container {
+        grid-template-columns: 1fr; /* 1 column */
+    }
+
+    .carousel-container img {
+        width: 100%;
+    }
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #fff; /* Light mode background */
+    color: #000; /* Light mode text color */
+}
+
+.navbar {
+    background: #333;
+    color: white;
+    padding: 1em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar a {
+    color: white;
+    text-decoration: none;
+    margin-left: 1em;
+}
+
+.hero {
+    text-align: center;
+    background: #f4f4f4;
+    padding: 2em 0;
+}
+
+.carousel {
+    width: 100%;
+    overflow: hidden;
+    background: #ddd;
+    padding: 1em 0;
+    display: flex;
+    justify-content: center;
+}
+
+.carousel-container {
+    display: flex;
+    animation: slide 15s infinite;
+    width: 100%;
+}
+
+.carousel-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@keyframes slide {
+    0% { transform: translateX(0); }
+    33% { transform: translateX(-100%); }
+    66% { transform: translateX(-200%); }
+    100% { transform: translateX(0); }
+}
+
+/* Card container */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2em;
+    padding: 2em;
+    justify-items: center;
+    background-color: #fafafa;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Individual card styles */
+.card {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    text-align: center;
+    padding-bottom: 1em;
+    width: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease; /* Add border transition */
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h3 {
+    margin: 0.5em 0;
+}
+
+.card p {
+    padding: 0 1em;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212; /* Dark mode background */
+    color: white; /* Dark mode text color */
+}
+
+body.dark-mode .navbar {
+    background-color: #1a1a1a; /* Darker navbar background */
+}
+
+body.dark-mode .card-container {
+    background-color: #1e1e1e; /* Dark card container background */
+}
+
+body.dark-mode .card {
+    border-color: #444; /* Darker card borders */
+    background: #2e2e2e; /* Darker card background */
+}
+
+body.dark-mode .card h3,
+body.dark-mode .card p {
+    color: white; /* White text in cards for dark mode */
+}
+
+body.dark-mode .dark-mode-toggle {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+body.dark-mode .dark-mode-toggle:hover {
+    background-color: #444;
+}
+
+.card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+    .card-container {
+        grid-template-columns: 1fr;
+    }
+
+    .carousel-container img {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .card-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
