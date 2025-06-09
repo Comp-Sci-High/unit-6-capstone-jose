@@ -391,3 +391,23 @@ body.dark-mode .dark-mode-toggle:hover {
         grid-template-columns: repeat(2, 1fr);
     }
 }
+
+.carousel {
+    width: 1200px;  /* Width of the carousel */
+    height: 600px;
+    overflow: hidden;  /* Ensures images overflow outside the carousel container are hidden */
+    margin: auto;  /* Center the carousel on the page */
+    position: relative;
+}
+
+/* The container that holds all the images */
+.carousel-container {
+    display: flex;
+    transition: transform 0.5s ease-in-out;  /* Smooth transition between images */
+}
+
+/* Style for the images */
+.carousel-container img {
+    max-width: 100%;   /* Ensures image stays within the container */
+    height: auto;      /* Keeps the aspect ratio intact */
+}

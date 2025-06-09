@@ -58,3 +58,14 @@ const rickRollBtn = document.createElement('button');
     });
 
     document.body.appendChild(rickRollBtn);
+
+
+        let index = 0;
+        const totalSlides = 3;
+        const carousel = document.getElementById('carouselContainer');
+
+        setInterval(() => {
+            index = (index + 1) % totalSlides;
+            carousel.style.transform = `translateX(-${index * 800}px)`;
+        }, 3000); // Change every 3 seconds
+

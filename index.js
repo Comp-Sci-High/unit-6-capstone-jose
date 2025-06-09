@@ -38,9 +38,9 @@ app.get("/", async (req, res) => {
     res.render("cards.ejs", { teachers });
 });
 
-app.get("/", async (req, res) => {
+app.get("/content", async (req, res) => {
     const content = await Content.find({});
-    res.render("content.ejs", { Contents });
+    res.render("content.ejs",  {});
 });
 
 

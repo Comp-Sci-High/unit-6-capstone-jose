@@ -8,15 +8,63 @@
   <script src="/script.js" defer></script>
 </head>
 <body>
+<nav class="navbar">
+        <a href="index.html" class="logo">Comp Sci High</a>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/content">More</a></li>     
+        </ul>
+    </nav>
+  
+<body>
 
-    <div class="teachers-grid">
-      <% for (let i = 0; i < teachers.length; i++) { %>
-        <div class="teacher-content">
-          <img src="<%= teachers[i].image %>" alt="<%= teachers[i].name %>" />
-          <div class="teacher-content">
-            <h2><%= teachers[i].name %></h2>
-            <p><strong>Department:</strong> <%= teachers[i].department %></p>
-          </div>
-        </div>
-      <% } %>
+  <div class="card-container">
+    <div class="card">
+      <video controls>
+        <source src="/media/video1.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <h3>Video 1 Title</h3>
+      <p>This is video 1 description text that explains the content.</p>
     </div>
+
+    <div class="card">
+      <img src="/media/image1.jpg" alt="Image 1" />
+      <h3>Image 1 Title</h3>
+      <p>This is image 1 description text that explains the content.</p>
+    </div>
+
+    <div class="card">
+      <video controls>
+        <source src="/media/video2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <h3>Video 2 Title</h3>
+      <p>This is video 2 description text that explains the content.</p>
+    </div>
+
+    <div class="card">
+      <img src="/media/image2.jpg" alt="Image 2" />
+      <h3>Image 2 Title</h3>
+      <p>This is image 2 description text that explains the content.</p>
+    </div>
+
+    <div class="card">
+      <video controls>
+        <source src="/media/video3.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <h3>Video 3 Title</h3>
+      <p>This is video 3 description text that explains the content.</p>
+    </div>
+
+    <div class="card">
+      <img src="/media/image3.jpg" alt="Image 3" />
+      <h3>Image 3 Title</h3>
+      <p>This is image 3 description text that explains the content.</p>
+    </div>
+  </div>
+
+</body>
+</html>
+    
