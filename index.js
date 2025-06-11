@@ -43,16 +43,22 @@ app.get("/content", async (req, res) => {
     res.render("content.ejs",  {});
 });
 
+app.get("/admin", async (req, res) => {
+    const teachers = await Teacher.find({});
+    const content = await Content.find({});
+    res.render("admin.ejs", { teachers, content });
+});
 
-app.delete("/delete/teachers:_id", async (req,res) => {
-    const response = await Teacher.findOneAndDelete({ name: req.params._id})
-res.json(response)
-})
 
-app.delete("/delete/contents:_id", async (req,res) => {
-    const response = await Content.findOneAndDelete({ name: req.params._id})
-res.json(response)
-})
+app.delete("/delete/teachers:_id", async (req, res) => {
+    const response = await Teacher.findByIdAndDelete(req.params._id);
+    res.json(response);
+});
+
+app.delete("/delete/contents:_id", async (req, res) => {
+    const response = await Content.findByIdAndDelete(req.params._id);
+    res.json(response);
+});
 
 app.patch("/contents/update/:_id", async (req,res) => {
   const response = await Content.findOneAndUpdate({name})
@@ -62,7 +68,35 @@ app.patch("/teachers/update/:_id", async (req,res) => {
   const response = await Teacher.findOneAndUpdate({name})
 })
 
-// app.post()
+app.get("/content", async (req, res) => {
+    const content = await Content.find({});
+    res.render("content.ejs", { content });
+});
+
+// To get content and teachers for admin page
+app.get("/admin", async (req, res) => {
+    const content = await Content.find({});
+    const teachers = await Teacher.find({});
+    res.render("admin.ejs", { content, teachers });
+});
+
+// Delete content card by ID
+app.delete("/delete/contents/:id", async (req, res) => {
+    const response = await Content.findByIdAndDelete(req.params.id);
+    res.json(response);
+});
+
+// Add new content card
+app.post("/add/content", async (req, res) => {
+    try {
+        const { name, image, message } = req.body;
+        const newContent = new Content({ name, image, message });
+        await newContent.save();
+        res.status(201).json(newContent);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
 
 
 async function startServer() {

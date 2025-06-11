@@ -10,62 +10,63 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.classList.add('dark-mode');
     }
 
-    // Create dark mode button
+    // Create dark mode toggle button
     const toggleBtn = document.createElement('button');
     toggleBtn.innerText = '🌓 Toggle Dark Mode';
-    toggleBtn.style.position = 'fixed';
-    toggleBtn.style.bottom = '20px';
-    toggleBtn.style.right = '20px';
-    toggleBtn.style.padding = '10px 15px';
-    toggleBtn.style.backgroundColor = '#228B22';
-    toggleBtn.style.color = 'white';
-    toggleBtn.style.border = 'none';
-    toggleBtn.style.borderRadius = '5px';
-    toggleBtn.style.cursor = 'pointer';
-    toggleBtn.style.zIndex = '1000';
-
+    Object.assign(toggleBtn.style, {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        padding: '10px 15px',
+        backgroundColor: '#228B22',
+        color: 'white',
+        border: 'none',
+        borderRadius: '5px',
+        cursor: 'pointer',
+        zIndex: '1000',
+    });
     toggleBtn.addEventListener('click', toggleDarkMode);
     document.body.appendChild(toggleBtn);
 
-    // ======== SCROLL ANIMATIONS ========
-    const scrollElements = document.querySelectorAll('.card, .hero');
+    // Create invisible rickroll button just above dark mode button
+    const rickRollBtn = document.createElement('button');
+    Object.assign(rickRollBtn.style, {
+        position: 'fixed',
+        bottom: '60px', // above dark mode toggle
+        right: '20px',
+        width: '100px',
+        height: '30px',
+        opacity: '0', // invisible
+        cursor: 'pointer',
+        zIndex: '999',
+    });
+    rickRollBtn.addEventListener('click', () => {
+        window.location.href = 'https://media.tenor.com/saW3dB7RDXsAAAAC/rickroll-rick-astley.gif'; // Rickroll gif link
+    });
+    document.body.appendChild(rickRollBtn);
 
-    const observer = new IntersectionObserver(entries => {
+    // Scroll animations
+    const scrollElements = document.querySelectorAll('.card, .hero');
+    const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('in-view');
             }
         });
-    }, {
-        threshold: 0.2,
-    });
+    }, { threshold: 0.2 });
 
     scrollElements.forEach(el => observer.observe(el));
-});
 
-const rickRollBtn = document.createElement('button');
-    rickRollBtn.style.position = 'fixed';
-    rickRollBtn.style.bottom = '60px'; // slightly above the dark mode toggle
-    rickRollBtn.style.right = '20px';
-    rickRollBtn.style.width = '100px';
-    rickRollBtn.style.height = '30px';
-    rickRollBtn.style.opacity = '0'; // Makes it invisible
-    rickRollBtn.style.cursor = 'pointer';
-    rickRollBtn.style.zIndex = '999';
-
-    rickRollBtn.addEventListener('click', () => {
-        window.location.href = ' https://media.tenor.com/saW3dB7RDXsAAAAC/rickroll-rick-astley.gif'; // Rickroll gif link
-    });
-
-    document.body.appendChild(rickRollBtn);
-
-
+    // Carousel slider logic
+    const carousel = document.querySelector('.carousel-container');
+    if (carousel) {
         let index = 0;
-        const totalSlides = 3;
-        const carousel = document.getElementById('carouselContainer');
+        const totalSlides = carousel.children.length;
+        const slideWidth = carousel.children[0].getBoundingClientRect().width;
 
         setInterval(() => {
             index = (index + 1) % totalSlides;
-            carousel.style.transform = `translateX(-${index * 800}px)`;
+            carousel.style.transform = `translateX(-${index * slideWidth}px)`;
         }, 3000); // Change every 3 seconds
-
+    }
+});
